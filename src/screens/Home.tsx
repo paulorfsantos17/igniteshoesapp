@@ -7,10 +7,12 @@ import { Brands } from '../components/Brands';
 import { Products } from '../components/Products';
 import { HomeHeader } from '../components/HomeHeader';
 import { ProductCardProps } from '../components/ProductCard';
+import { tagUserInfoCreate } from '../notifications/notificationsTags';
 
 export function Home() {
   const [brandSelected, setBrandSelected] = useState('Nike');
   const [products, setProducts] = useState<ProductCardProps[]>([]);
+  tagUserInfoCreate()
 
   useEffect(() => {
     const filtered = PRODUCTS.filter(product => product.brand === brandSelected) as ProductCardProps[];
