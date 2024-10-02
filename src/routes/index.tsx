@@ -13,6 +13,23 @@ export function Routes() {
   const theme = DefaultTheme;
   theme.colors.background = colors.gray[700];
 
+  const linking = {
+    prefixes: ["igniteshoes://", "com.igniteshoesapp://" ],
+    config: {
+      screens: {
+        details: {
+          path: "/details/:productId",
+          parse: {
+            productId: (productId: string) => productId
+          }
+        }, cart: {
+          path: "/cart",
+        }
+      }
+    }
+  }
+
+
   useEffect(() =>  {
     const handleNotification = (event: NotificationWillDisplayEvent) =>  
     {
@@ -28,7 +45,7 @@ export function Routes() {
   }, [])
 
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer theme={theme} linking={linking}>
       <AppRoutes />
       {notification?.title && <Notification data={notification} onClose={() => setNotification(undefined)}/>}
     </NavigationContainer>

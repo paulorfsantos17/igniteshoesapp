@@ -11,3 +11,7 @@ export async function tagUserInfoCreate() {
   console.log("🚀 ~ tagUserInfoCreate ~ err:", err)
   }
 }
+
+export function tagCartUpdate(itemsCount: string) {
+  OneSignal.User.addTag('cart_items_count', itemsCount)
+}
